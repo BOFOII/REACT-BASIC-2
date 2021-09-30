@@ -3,6 +3,7 @@ import './App.css';
 import React, { Component } from 'react';
 import axios from 'axios';
 import Members from './components/Members/Members.js';
+import Form from './components/Form/Form.js';
 
 class App extends Component {
   constructor(props) {
@@ -117,22 +118,21 @@ class App extends Component {
           <div className="col-md-6" style={{ border: '1px solid black'}}>
             <h2>Member</h2>
             <div className="row">
-              <Members members={ this.state.members } editButtonClick={ (member) => this.editButtonHandler(member) } deleteButtonClick={ (member_id) => this.deleteMember(member_id) }></Members>
+              <Members 
+              members={ this.state.members } 
+              editButtonClick={ (member) => this.editButtonHandler(member) } 
+              deleteButtonClick={ (member_id) => this.deleteMember(member_id) }></Members>
             </div>
           </div>
           <div className="col-6" style={{ border: '1px solid black'}}>
-            <h2>Form { this.state.formStatus }</h2>
-            <form onSubmit={ this.onSubmit }>
-              <div className="form-group">
-                <label>First Name</label>
-                <input type="text" className="form-control" onChange={ this.fromCreate } name="first_name" value={ this.state.first_name }/>
-              </div>
-              <div className="form-group">
-                <label>Last Name</label>
-                <input type="text" className="form-control" onChange={ this.fromCreate } name="last_name" value={ this.state.last_name }/>
-              </div>
-              <button disabled={ this.state.buttonVisiblty } type="submit" className="btn btn-primary">Submit</button>
-            </form>
+            <Form 
+            formStatus={ this.state.formStatus }
+            onSubmit={ this.onSubmit }
+            buttonVisiblty={ this.buttonVisiblty }
+            first_name={ this.state.first_name }
+            last_name={ this.state.last_name } 
+            fromCreate={ this.fromCreate }
+            fromCreate={ this.fromCreate } ></Form>
           </div>
         </div>
       </div>
